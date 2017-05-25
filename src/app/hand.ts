@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { Card } from './card';
 import { Deck } from './deck';
 
+/**
+ * A class to represent a player's hand
+ */
 @Injectable()
 export class Hand {
   cards: Card[] = [];
@@ -19,10 +22,7 @@ export class Hand {
    * @returns {Number} The score of the Hand.
    * */
   get score() {
-    let i,
-      score = 0,
-      cardVal = 0, // Stashing the Card's value
-      aces = 0; // Stores the # of Aces in the Hand
+    let i, score = 0, cardVal = 0, aces = 0;
 
     for (i = 0; i < this.cards.length; i++) {
       cardVal = this.cards[i].value;
@@ -40,17 +40,11 @@ export class Hand {
     return score;
   }
 
-  printHand() {
-    const arr = [];
-    for (const c of this.cards) {
-      arr.push(c.name);
-    }
-    return arr;
-  }
-
+  /**
+   * Add a card to hand if less than 5
+   */
   hitMe() {
     if (this.cards.length < 5) {
-      ;
       this.cards.push(this.deck.deal());
     }
   }

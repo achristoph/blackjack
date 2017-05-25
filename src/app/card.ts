@@ -1,10 +1,18 @@
 import { Injectable } from '@angular/core';
 
+/**
+ * A class to represent a card object
+ */
 @Injectable()
 export class Card {
   _suit: number;
   number: number;
 
+  /**
+   *
+   * @param suit - the suit of the card ace, spade
+   * @param number - the number 1-13
+   */
   constructor(suit, number) {
     this._suit = suit;
     this.number = number;

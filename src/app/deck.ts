@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Card } from './card';
 
+/**
+ * A class to represent a deck of cards
+ */
 @Injectable()
 export class Deck {
   cards = [];
@@ -8,9 +11,6 @@ export class Deck {
   /**
    * Initialize a new deck
    */
-  constructor() {
-  }
-
   createNewDeck() {
     let suit;
     let number;
@@ -32,6 +32,9 @@ export class Deck {
     return this.cards;
   };
 
+  /**
+   * @returns {Card[]} An array of cards representing the shuffled version of the deck.
+   */
   deal() {
     if (this.cards.length === 0) {
       console.log('Empty deck, new deck created');

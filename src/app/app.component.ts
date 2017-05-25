@@ -39,7 +39,8 @@ export class AppComponent implements OnInit {
     this.showHitButton = true;
     this.showStandButton = true;
   }
-  declareWinner() {
+
+  showGameResult() {
     this.isGameOver = true;
     const dealerScore = this.dealerHand.score;
     const userScore = this.yourHand.score;
@@ -88,7 +89,7 @@ export class AppComponent implements OnInit {
 
   onStand() {
     this.doDealerHand();
-    this.declareWinner();
+    this.showGameResult();
     this.showDeal();
   }
 }
