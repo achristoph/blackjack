@@ -1,3 +1,16 @@
-<h1>
-  {{title}}
-</h1>
+<div id="yourHand">
+  <span *ngIf="isGameOver;else Cards">
+    {{outcome}}<br/> Dealer: {{dealerHand?.score}}<br/> You: {{yourHand?.score}}
+  </span>
+  <ng-template #Cards>
+    <div class="card {{card.suit}}" *ngFor="let card of yourHand?.cards">
+      {{card.value}}<span [innerHTML]="card.symbol"></span>
+    </div>
+  </ng-template>
+</div>
+<div>Score: {{this.yourHand?.score}} Won/Lose/%Won: <span id="wins">{{wins}}</span> / <span id="losses">{{losses}}</span>
+  <span *ngIf="isGameOver">/ {{winPercentage()}}%</span>
+</div>
+<button *ngIf="showDealButton" md-raised-button color="accent" (click)="onDeal()">Deal</button>
+<button *ngIf="showHitButton" md-raised-button color="warn" (click)="onHit()">Hit</button>
+<button *ngIf="showStandButton" md-raised-button color="primary" (click)="onStand()">Stand</button>
